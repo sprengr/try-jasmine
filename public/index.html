@@ -13,7 +13,7 @@
   <script type="text/javascript" src="js/vendor/ace/mode-coffee.js"></script>
   <script type="text/javascript" src="js/vendor/ace/mode-javascript.js"></script>
   <script type="text/javascript" src="js/vendor/js2coffee.min.js"></script>
-  <script type="text/javascript" src="js/try-it.js"></script>
+  <script type="text/javascript;version=1.7" src="js/try-it.js"></script>
 </head>
 <body>
   <div class="body-wrap">
@@ -32,30 +32,11 @@
       <div class="flash hidden"></div>
       </div>
       <div class="content-wrap">
-        <div class="meta">
-          <div class="macros">
-            <span>macros</span>
-            <a href="#" class="button insert" data-javascript-snippet="describe('Thing',function(){});" data-coffee-snippet="describe 'Thing', ->">describe</a>
-            <a href="#" class="button insert" data-javascript-snippet="it('does something',function(){});" data-coffee-snippet="it 'does something', ->">it</a>
-            <a href="#" class="button insert" data-javascript-snippet="expect(true).toBe(true);" data-coffee-snippet="expect(true).toBe true">expect</a>
-            <a href="#" class="button insert" data-javascript-snippet="spyOn(object,'methodName');" data-coffee-snippet="spyOn(object,'methodName')">spyOn</a>
-            <a href="#" class="button insert" data-javascript-snippet="beforeEach(function(){});" data-coffee-snippet="beforeEach ->">beforeEach</a>
-          </div>
-
-          <div class="coffee-controls">
-            <span>convert</span>
-            <a class="coffee button" href="#">JavaScript &rArr; CoffeeScript</a>
-            <a class="coffee2js button" href="#">CoffeeScript &rArr; JavaScript</a>
-            <span class="editor-mode">
-              <label for="mode-select">edit in</label>
-              <select id="mode-select">
-                <option value="javascript">JavaScript mode</option>
-                <option value="coffee">CoffeeScript mode</option>
-              </select>
-            </span>
-          </div>
-        </div>
+	  	  <select id="koan-selector">
+	  </select>
+	  
         <div class="source-wrap">
+
           <div id="spec-editor-wrapper" class="editor-wrapper vertical">
             <label for="specs">specs</label>
             <span class="runner-notice"></span>
@@ -114,7 +95,7 @@
   <pre class="template" id="default-specs">
   describe('panda',function(){
   it('is happy',function(){
-    expect(panda).toBe('happy');
+    expect(panda).toBe('happyyy');
   });
 });
   </pre>
@@ -141,5 +122,6 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
+  <!--<script type="text/javascript;version=1.7" src="js/koan-chooser.js"></script>-->
 </body>
 </html>

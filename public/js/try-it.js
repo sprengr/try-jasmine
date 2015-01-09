@@ -222,6 +222,55 @@
       });
     }
   })();
+  
+  var loadKoans = (function() {
+	$.ajax({
+		type: 'GET',
+		url: 'js/koans/',
+		dataType: 'text',
+		success: (specs) => {
+			var selector = document.getElementById('koan-selector');
+			specs.split('\n').forEach((koan) => {
+				selector.options[selector.options.length] = new Option(koan, koan);
+			});
+			selector.onchange = function() { 
+				koanChangeHandler(selector.selectedOptions[0].value);
+				answerChangeHandler(selector.selectedOptions[0].value);
+			};
+			//selector.onChange = () => alert('hi'); //koanChangeHandler;
+		}
+	});
+  })();
+  
+  var koanChangeHandler = (function(koan){
+	loadKoan(koan);	
+  });
+
+  var loadKoan = (function(koan) {
+	$.ajax({
+		type: 'GET',
+		url: 'js/koans/'+koan,
+		dataType: 'text',
+		success: (specs) => {
+			editors.get('specs').getSession().setValue(specs);
+		}
+	});
+});
+
+  var answerChangeHandler = (function(answer){
+    loadAnswer(answer);
+  });
+  
+    var loadAnswer = (function(answer) {
+	  $.ajax({
+		type: 'GET',
+		url: 'js/answers/'+ answer,
+		dataType: 'text',
+		success: (answerTemplate) => {
+			editors.get('src').getSession().setValue(answerTemplate);
+		}
+	  });
+  });
 
   var hackAceKeyboardShortcuts = (function() {
     var canon = require('pilot/canon');
