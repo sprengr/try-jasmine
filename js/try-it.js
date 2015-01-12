@@ -223,7 +223,25 @@
     }
   })();
   
-  var loadKoans = (function() {
+  
+  var addToSelect = (selectSelector, option) => {
+	var selector = $(selectSelector);
+	selector.append(option);
+	//var selector = document.getElementById(selectName);
+	//selector.options[selector.options.length] = option;
+  };
+  
+  var loadKoans = $(function() {
+	window.app.config.koan.fileNames.forEach((koanName) => {
+		$('#koan-select').append(new Option(koanName, koanName));
+	}, this);
+	
+	$('#koan-select').change(function() { 
+		koanChangeHandler($(this).val());
+		answerChangeHandler($(this).val());
+	});
+  	//Directory Listing:
+	/*
 	$.ajax({
 		type: 'GET',
 		url: 'js/koans/',
@@ -240,7 +258,8 @@
 			//selector.onChange = () => alert('hi'); //koanChangeHandler;
 		}
 	});
-  })();
+	*/
+  });
   
   var koanChangeHandler = (function(koan){
 	loadKoan(koan);	
