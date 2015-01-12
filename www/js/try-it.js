@@ -240,6 +240,9 @@
 		koanChangeHandler($(this).val());
 		answerChangeHandler($(this).val());
 	});
+
+	$("#koan-select").val($("#koan-select option:first").val()).change();
+
   	//Directory Listing:
 	/*
 	$.ajax({
